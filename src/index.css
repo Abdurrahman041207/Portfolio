@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* Custom theme extending Tailwind */
+@theme {
+  --color-bg-dark: #05070f;
+  --color-bg-panel: rgba(15, 18, 36, 0.85);
+  --color-text-base: #e6f1ff;
+  --color-text-muted: #a0aec0;
+  --color-brand-primary: #10b981;
+  --color-brand-secondary: #38bdf8;
+  --color-brand-tertiary: #c084fc;
+  --color-border: rgba(255, 255, 255, 0.08);
+  
+  --font-family-sans: 'Inter', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  
+  --shadow-soft: 0 20px 80px rgba(3, 7, 18, 0.6);
+  
+  --radius-lg: 18px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 28px;
+  --radius-4xl: 32px;
+}
+
+/* Base styles */
+@layer base {
+  body {
+    @apply m-0 font-sans bg-bg-dark text-text-base min-h-screen leading-relaxed;
+    background: radial-gradient(circle at 20% 20%, #102235, #05070f 40%);
+  }
+  
+  a {
+    @apply text-inherit no-underline;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
+}
+
+/* Component layer for reusable patterns */
+@layer components {
+  .btn-primary {
+    @apply rounded-full border border-transparent py-3.5 px-7 text-[0.95rem] font-semibold cursor-pointer transition-all duration-300;
+    background: linear-gradient(120deg, #0ea5e9, #10b981, #c084fc);
+    background-size: 200% 200%;
+    color: #05070f;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .btn-primary:hover {
+    @apply -translate-y-0.5;
+    background-position: 100% 0;
+  }
+  
+  .btn-primary:disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent rounded-full py-3.5 px-7 text-[0.95rem] font-semibold cursor-pointer transition-all duration-300 text-text-base;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .btn-secondary:hover {
+    @apply border-brand-primary text-brand-primary;
+  }
+  
+  .glass-panel {
+    @apply bg-bg-panel border border-border rounded-3xl p-8 relative overflow-hidden;
+    backdrop-filter: blur(18px);
+  }
+  
+  .eyebrow {
+    @apply tracking-[0.2em] uppercase text-xs text-brand-secondary;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, var(--color-brand-secondary), var(--color-brand-primary));
+  }
+}

@@ -42,62 +42,72 @@ export const Contact = () => {
   };
 
   return (
-    <section className="section contact" id="contact">
+    <section className="my-30 max-sm:my-20" id="contact">
       <SectionHeading
         eyebrow="Collab inquiry"
-        title="Let’s design the next launch together"
+        title="Let's design the next launch together"
         description="Tell me about your roadmap, your team, or the vibe you want to create. I reply within 48h."
       />
 
-      <div className="contact-shell">
-        <div className="contact-info">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 rounded-4xl border border-border bg-white/[0.02] p-7.5 max-sm:p-5">
+        <div className="flex flex-col gap-4">
           {contactMethods.map((method) => (
             <motion.a
               key={method.label}
-              className="contact-card"
+              className="rounded-xl border border-border p-4.5 flex gap-4.5 items-center transition-all duration-300 bg-white/[0.01] hover:bg-white/[0.03]"
               href={method.href}
               target={method.href?.startsWith('http') ? '_blank' : undefined}
               rel="noreferrer"
               whileHover={{ x: 10 }}
             >
-              <span className="contact-card__icon">{method.icon}</span>
+              <span className="w-12 h-12 rounded-2xl bg-brand-secondary/15 grid place-items-center text-xl">
+                {method.icon}
+              </span>
               <div>
-                <p className="contact-card__label">{method.label}</p>
-                <p className="contact-card__value">{method.value}</p>
+                <p className="m-0 font-semibold">{method.label}</p>
+                <p className="m-0 text-text-muted">{method.value}</p>
               </div>
             </motion.a>
           ))}
         </div>
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <div className="form-row">
-            <label>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-4">
+            <label className="font-semibold text-text-muted flex flex-col gap-1.5 text-[0.95rem]">
               Name
-              <input name="name" placeholder="Ava Product Lead" required />
+              <input
+                name="name"
+                placeholder="Ava Product Lead"
+                required
+                className="rounded-2xl border border-white/15 bg-bg-dark/80 py-3.5 px-4 text-text-base text-base font-sans focus:outline-2 focus:outline-brand-primary/40"
+              />
             </label>
-            <label>
+            <label className="font-semibold text-text-muted flex flex-col gap-1.5 text-[0.95rem]">
               Email
               <input
                 type="email"
                 name="email"
                 placeholder="you@company.com"
                 required
+                className="rounded-2xl border border-white/15 bg-bg-dark/80 py-3.5 px-4 text-text-base text-base font-sans focus:outline-2 focus:outline-brand-primary/40"
               />
             </label>
           </div>
-          <label>
+          <label className="font-semibold text-text-muted flex flex-col gap-1.5 text-[0.95rem]">
             Project link
             <input
               name="project"
               placeholder="deck, notion doc, or key metrics"
+              className="rounded-2xl border border-white/15 bg-bg-dark/80 py-3.5 px-4 text-text-base text-base font-sans focus:outline-2 focus:outline-brand-primary/40"
             />
           </label>
-          <label>
+          <label className="font-semibold text-text-muted flex flex-col gap-1.5 text-[0.95rem]">
             What should we build?
             <textarea
               name="message"
               placeholder="Launch goal, timeline, team needs..."
               rows={5}
               required
+              className="rounded-2xl border border-white/15 bg-bg-dark/80 py-3.5 px-4 text-text-base text-base font-sans resize-y focus:outline-2 focus:outline-brand-primary/40"
             />
           </label>
           <button
@@ -114,4 +124,3 @@ export const Contact = () => {
     </section>
   );
 };
-

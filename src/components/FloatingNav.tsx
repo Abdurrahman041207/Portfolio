@@ -39,19 +39,25 @@ export const FloatingNav = () => {
   }, []);
 
   return (
-    <div className="floating-nav">
-      <div className="floating-nav__items">
+    <div className="fixed top-5 left-1/2 -translate-x-1/2 z-10 bg-bg-dark/80 border border-border rounded-full py-3 px-6 pb-4.5 backdrop-blur-lg shadow-[0_10px_30px_rgba(5,7,15,0.5)] w-[min(480px,90vw)] hidden sm:block">
+      <div className="flex justify-between text-[0.85rem]">
         {navItems.map((item) => (
           <a
             key={item.id}
-            className={active === item.id ? 'active' : ''}
+            className={`font-semibold transition-colors duration-300 ${active === item.id ? 'text-brand-primary' : 'text-text-muted hover:text-text-base'}`}
             href={`#${item.id}`}
           >
             {item.label}
           </a>
         ))}
       </div>
-      <motion.span className="floating-nav__progress" style={{ scaleX: smoothProgress }} />
+      <motion.span
+        className="block mt-3 h-[3px] rounded-full origin-left"
+        style={{
+          scaleX: smoothProgress,
+          background: 'linear-gradient(90deg, var(--color-brand-secondary), var(--color-brand-primary))'
+        }}
+      />
     </div>
   );
 };

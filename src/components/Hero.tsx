@@ -44,15 +44,24 @@ export const Hero = () => {
   );
 
   return (
-    <section className="hero" id="hero">
-      <div className="hero__bg">
-        <div className="orb orb--one" />
-        <div className="orb orb--two" />
-        <div className="grid" />
+    <section className="relative min-h-[90vh] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-10 pt-20 max-md:grid-cols-1" id="hero">
+      {/* Background effects */}
+      <div className="absolute -inset-10 z-[-1] overflow-hidden blur-[60px]">
+        <div className="absolute w-70 h-70 rounded-full opacity-50 mix-blend-screen bg-brand-primary top-[5%] left-[20%]" />
+        <div className="absolute w-70 h-70 rounded-full opacity-50 mix-blend-screen bg-[#2563eb] bottom-0 right-[15%]" />
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }}
+        />
       </div>
-      <div className="hero__content">
+
+      {/* Hero content */}
+      <div className="flex flex-col gap-6">
         <motion.span
-          className="hero__eyebrow"
+          className="text-[0.85rem] tracking-[0.2em] text-brand-secondary uppercase"
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -60,13 +69,14 @@ export const Hero = () => {
           Available for select collaborations
         </motion.span>
         <motion.h1
+          className="text-[clamp(3rem,6vw,4.5rem)] m-0 leading-[1.1]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.7 }}
         >
           {heroContent.name}
         </motion.h1>
-        <div className="hero__roles">
+        <div className="flex flex-wrap gap-3 text-xl text-brand-primary">
           {roleWords.map((word, index) => (
             <motion.span
               key={word + index}
@@ -80,7 +90,7 @@ export const Hero = () => {
           ))}
         </div>
         <p>{heroContent.tagline}</p>
-        <div className="hero__cta">
+        <div className="flex flex-wrap gap-4 max-sm:flex-col">
           <a href="#projects" className="btn-primary">
             {heroContent.ctaPrimary}
           </a>
@@ -90,31 +100,45 @@ export const Hero = () => {
         </div>
         <StatGrid stats={stats} />
       </div>
+
+      {/* Interactive panel */}
       <motion.div
-        className="hero__panel"
+        className="bg-bg-panel border border-border rounded-3xl p-8 min-h-[420px] relative overflow-hidden backdrop-blur-lg"
+        style={{
+          rotateX: rotateXSpring,
+          rotateY: rotateYSpring,
+          transformStyle: 'preserve-3d'
+        }}
         onPointerMove={handlePointer}
         onPointerLeave={handleLeave}
-        style={{ rotateX: rotateXSpring, rotateY: rotateYSpring }}
       >
         <motion.div
-          className="hero__panel-shine"
-          style={{ opacity: shine }}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            opacity: shine,
+            background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), transparent 60%)'
+          }}
         />
-        <div className="hero__panel-content">
+        <div className="relative z-[1]">
           <p>Currently building</p>
-          <h3>Immersive product stories</h3>
-          <ul>
-            <li>Conversation design + AI copilots</li>
-            <li>Live data narratives</li>
-            <li>Systems thinking workshops</li>
+          <h3 className="my-3">Immersive product stories</h3>
+          <ul className="list-none p-0 mt-6 flex flex-col gap-2.5">
+            <li className="flex items-center gap-2.5 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-secondary before:inline-block">
+              Conversation design + AI copilots
+            </li>
+            <li className="flex items-center gap-2.5 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-secondary before:inline-block">
+              Live data narratives
+            </li>
+            <li className="flex items-center gap-2.5 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-secondary before:inline-block">
+              Systems thinking workshops
+            </li>
           </ul>
         </div>
-        <div className="hero__panel-footer">
+        <div className="mt-8 pt-6 border-t border-border flex justify-between items-center text-text-muted">
           <span>Next slot</span>
-          <strong>January 2026</strong>
+          <strong className="text-text-base text-lg">January 2026</strong>
         </div>
       </motion.div>
     </section>
   );
 };
-
