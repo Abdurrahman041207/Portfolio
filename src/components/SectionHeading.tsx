@@ -22,8 +22,16 @@ export const SectionHeading = ({
     transition={{ duration: 0.6 }}
   >
     {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-    <h2 className="text-[clamp(2.2rem,4vw,3.2rem)] my-2">{title}</h2>
-    {description && <p className="text-text-muted">{description}</p>}
+    <h2 className="text-[clamp(2.2rem,4vw,3.2rem)] my-2 text-balance font-semibold tracking-tight">
+      {title}
+    </h2>
+    {description && (
+      <p
+        className={`text-text-muted leading-relaxed text-pretty max-w-2xl ${align === 'center' ? 'mx-auto' : ''}`}
+      >
+        {description}
+      </p>
+    )}
   </motion.header>
 );
 

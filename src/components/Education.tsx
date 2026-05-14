@@ -5,9 +5,9 @@ import { SectionHeading } from './SectionHeading';
 export const Education = () => (
   <section className="my-30 max-sm:my-20" id="education">
     <SectionHeading
-      eyebrow="Foundations"
-      title="Craft rooted in research and community"
-      description="A mix of formal study, lab research, and ongoing peer-led learning keeps curiosity sharp."
+      eyebrow="Education"
+      title="Credentials that match the CV"
+      description="Westminster degree delivered through IIT Sri Lanka, plus local secondary qualifications — easy to verify in screening."
     />
 
     <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6">

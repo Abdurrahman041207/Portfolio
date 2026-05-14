@@ -14,8 +14,8 @@ const App = () => (
     <Education />
     <Contact />
     <footer className="mt-20 pt-10 border-t border-white/[0.06] flex justify-between flex-wrap gap-3 text-text-muted">
-      <p>© {new Date().getFullYear()} Abdur Rahman · Built with React + Vite</p>
-      <a href="mailto:hey@abdur.dev">hey@abdur.dev</a>
+      <p>© {new Date().getFullYear()} Abdurrahman Rushdi · Built with React + Vite</p>
+      <a href="mailto:abdurrahman20041207@gmail.com">abdurrahman20041207@gmail.com</a>
     </footer>
   </div>
 );

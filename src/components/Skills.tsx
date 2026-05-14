@@ -17,9 +17,9 @@ export const Skills = () => {
   return (
     <section className="my-30 max-sm:my-20" id="skills">
       <SectionHeading
-        eyebrow="Capabilities"
-        title="Stacks that scale craft and impact"
-        description="End-to-end ownership from whiteboard sketch to production rollout with calm, well-tested systems."
+        eyebrow="Technical skills"
+        title="What I can contribute on day one"
+        description="Backend APIs, auth, queues, and containers — plus React for product surfaces. Wording matches my résumé so hiring screens and interviews stay consistent."
       />
 
       <div className="flex gap-4 flex-wrap justify-center mb-8" role="tablist">
